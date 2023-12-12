@@ -13,9 +13,12 @@
 void format_specifier(const char specifier, va_list args, int *counter)
 {
 	char *strpos;
+	int number;
+	int reverse;
 
 	switch (specifier)
 	{
+
 		case 'c':
 			putchar(va_arg(args, int));
 			(*counter)++;
@@ -36,23 +39,44 @@ void format_specifier(const char specifier, va_list args, int *counter)
 			}
 			break;
 		case 'd':
-			strpos = va_arg(args, char *);
+			reverse = 0;
+			number = va_arg(args, int);
 
-			while (*strpos != '\0')
+			if (strpos < 0)
+				putchar('-');
+				number = -number;
+
+			while (number > 9)
 			{
-				putchar(*strpos);
-				strpos++;
-				(*counter)++;
+				reverse = reverse * 10 + number % 10;
+				number = number / 10;
 			}
-			break;
-		case 'i':
-			strpos = va_arg(args, char *);
-
-			while (*strpos != '\0')
+			putchar(number + '0');
+			while (reverse)
 			{
-				putchar(*strpos);
-				strpos++;
-				(*counter)++;
+				putchar(reverse % 10 + '0');
+				reverse = reverse / 10;
+			}
+
+			break;
+		case 'i':	
+			reverse = 0;
+			number = va_arg(args, int);
+
+			if (strpos < 0)
+				putchar('-');
+				number = -number;
+
+			while (number > 9)
+			{
+				reverse = reverse * 10 + number % 10;
+				number = number / 10;
+			}
+			putchar(number + '0');
+			while (reverse)
+			{
+				putchar(reverse % 10 + '0');
+				reverse = reverse / 10;
 			}
 			break;
 		case '%':

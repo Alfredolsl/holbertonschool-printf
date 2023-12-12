@@ -18,8 +18,12 @@ void format_specifier(const char specifier, va_list args, int *counter)
 			(*counter)++;
 			break;
 		case 's':
-			char *strp = args;
-			while (strp != '\0')
+			int pos;
+			char *strp;
+
+			pos = 0;
+			*strp = &args;
+			while (strp[pos] != '\0')
 				putchar(strp);
 			(*counter)++;
 		case '%':

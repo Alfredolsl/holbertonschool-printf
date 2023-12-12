@@ -42,7 +42,7 @@ void format_specifier(const char specifier, va_list args, int *counter)
 			reverse = 0;
 			number = va_arg(args, int);
 
-			if (strpos < 0)
+			if (number < 0)
 				putchar('-');
 				number = -number;
 
@@ -63,7 +63,7 @@ void format_specifier(const char specifier, va_list args, int *counter)
 			reverse = 0;
 			number = va_arg(args, int);
 
-			if (strpos < 0)
+			if (number < 0)
 				putchar('-');
 				number = -number;
 

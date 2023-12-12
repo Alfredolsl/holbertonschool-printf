@@ -74,9 +74,11 @@ int _printf(const char *format, ...)
 		}
 		else if (*format == '%' && *(format + 1) == '\0')
 			return (-1);
-		
-		putchar(*format);
-		counter++;
+		else
+		{
+			putchar(*format);
+			counter++;
+		}
 	}
 
 	va_end(args);

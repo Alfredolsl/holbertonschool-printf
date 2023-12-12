@@ -43,8 +43,10 @@ void format_specifier(const char specifier, va_list args, int *counter)
 			number = va_arg(args, int);
 
 			if (number < 0)
+			{
 				putchar('-');
 				number = -number;
+			}
 
 			while (number > 9)
 			{
@@ -64,8 +66,10 @@ void format_specifier(const char specifier, va_list args, int *counter)
 			number = va_arg(args, int);
 
 			if (number < 0)
+			{
 				putchar('-');
 				number = -number;
+			}
 
 			while (number > 9)
 			{

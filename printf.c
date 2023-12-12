@@ -20,10 +20,11 @@ void format_specifier(const char specifier, va_list args, int *counter)
 			(*counter)++;
 			break;
 		case 's':
-			*strpos = va_arg(args, char *);
+			strpos = va_arg(args, char *);
 			while (*strpos != '\0')
 			{
 				putchar(*strpos);
+				strpos++;
 				(*counter)++;
 			}
 		case '%':

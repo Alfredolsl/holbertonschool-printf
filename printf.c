@@ -22,10 +22,12 @@ void format_specifier(const char specifier, va_list args, int *counter)
 			char *strp;
 
 			pos = 0;
-			*strp = &args;
+			*strp = va_arg(args, char *);
 			while (strp[pos] != '\0')
+			{
 				putchar(strp);
-			(*counter)++;
+				(*counter)++;
+			}
 		case '%':
 			putchar('%');
 			(*counter)++;
@@ -48,7 +50,7 @@ int _printf(const char *format, ...)
 		return (-1);
 
 	va_start(args, format);
-	count = 0;
+	counter = 0;
 
 	for (; format != '\0'; format++)
 	{

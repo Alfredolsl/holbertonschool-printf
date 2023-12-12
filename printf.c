@@ -23,13 +23,15 @@ void format_specifier(const char specifier, va_list args, int *counter)
 			strpos = va_arg(args, char *);
 
 			if (strpos == NULL)
-				printf("(null)");
-
-			while (*strpos != '\0')
+				*counter += printf("(null)");
+			else
 			{
-				putchar(*strpos);
-				strpos++;
-				(*counter)++;
+				while (*strpos != '\0')
+				{
+					putchar(*strpos);
+					strpos++;
+					(*counter)++;
+				}
 			}
 			break;
 		case '%':

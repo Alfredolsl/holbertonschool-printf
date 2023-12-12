@@ -27,9 +27,16 @@ void format_specifier(const char specifier, va_list args, int *counter)
 				strpos++;
 				(*counter)++;
 			}
+			break;
 		case '%':
 			putchar('%');
 			(*counter)++;
+			break;
+		default:
+			putchar('%');
+			putchar(specifier);
+			(*counter) += 2;
+			break;
 	}
 }
 
@@ -54,12 +61,12 @@ int _printf(const char *format, ...)
 	for (; *format != '\0'; format++)
 	{
 		/* if pointer called format is pointing to a format modifier */
-		if (format == '%' && *(format + 1) != '\0')
+		if (*format == '%' && *(format + 1) != '\0')
 		{
 			format++;
 			format_specifier(*format, args, &counter);
 		}
-		else if (format == '%' && *(format + 1) == '\0')
+		else if (*format == '%' && *(format + 1) == '\0')
 			return (-1);
 		else
 		{

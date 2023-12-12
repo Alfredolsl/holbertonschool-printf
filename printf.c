@@ -1,5 +1,6 @@
 #include <stdarg.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "main.h"
 
 /**
@@ -34,6 +35,25 @@ void format_specifier(const char specifier, va_list args, int *counter)
 				}
 			}
 			break;
+		case 'd':
+			strpos = va_arg(args, char *);
+
+			while (*strpos != '\0')
+			{
+				putchar(*strpos);
+				strpos++;
+				(*counter)++;
+			}
+			break;
+		case 'i':
+			strpos = va_arg(args, char *);
+
+			while (*strpos != '\0')
+			{
+				putchar(*strpos);
+				strpos++;
+				(*counter)++;
+			}
 		case '%':
 			putchar('%');
 			(*counter)++;

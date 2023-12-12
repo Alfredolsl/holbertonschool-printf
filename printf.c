@@ -11,6 +11,8 @@
 
 void format_specifier(const char specifier, va_list args, int *counter)
 {
+	char *strpos;
+
 	switch (specifier)
 	{
 		case 'c':
@@ -18,14 +20,10 @@ void format_specifier(const char specifier, va_list args, int *counter)
 			(*counter)++;
 			break;
 		case 's':
-			int pos;
-			char *strp;
-
-			pos = 0;
-			*strp = va_arg(args, char *);
-			while (strp[pos] != '\0')
+			*strpos = va_arg(args, char *);
+			while (*strpos != '\0')
 			{
-				putchar(strp);
+				putchar(*strpos);
 				(*counter)++;
 			}
 		case '%':
@@ -52,7 +50,7 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	counter = 0;
 
-	for (; format != '\0'; format++)
+	for (; *format != '\0'; format++)
 	{
 		/* if pointer called format is pointing to a format modifier */
 		if (format == '%' && *(format + 1) != '\0')

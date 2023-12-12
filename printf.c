@@ -1,5 +1,5 @@
-#include <stdarg.c>
-#include <stdlib.c>
+#include <stdarg.h>
+#include <stdlib.h>
 #include "main.h"
 
 /**
@@ -63,4 +63,6 @@ int _printf(const char *format, ...)
 		}
 	}
 	putchar('\n');
+
+	return (counter);
 }

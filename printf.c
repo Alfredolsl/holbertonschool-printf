@@ -3,10 +3,10 @@
 #include "main.h"
 
 /**
- * format_detector - select format
+ * format_specifier - select format
  * @specifier: char subsequent to the format modifier
  * @args: list of variadic args
- * @count: pointer to the counter
+ * @counter: pointer to the counter
  */
 
 void format_specifier(const char specifier, va_list args, int *counter)

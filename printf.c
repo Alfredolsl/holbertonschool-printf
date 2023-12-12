@@ -54,6 +54,7 @@ void format_specifier(const char specifier, va_list args, int *counter)
 				strpos++;
 				(*counter)++;
 			}
+			break;
 		case '%':
 			putchar('%');
 			(*counter)++;

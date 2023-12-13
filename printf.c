@@ -33,7 +33,7 @@ int print_number(int number)
 		number %= div;
 		div /= 10;
 	}
-	printf("%d", len);
+	printf("(len is %d)", len);
 	return (len);
 }
 

@@ -29,7 +29,8 @@ int print_number(int number)
 
 	while (div != 0)
 	{
-		len += putchar(number / div + '0');
+		len++;
+		putchar(number / div + '0');
 		number %= div;
 		div /= 10;
 	}

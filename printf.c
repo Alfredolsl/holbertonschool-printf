@@ -33,7 +33,7 @@ int print_number(int number)
 		number %= div;
 		div /= 10;
 	}
-
+	printf("%d", len);
 	return (len);
 }
 
@@ -71,10 +71,10 @@ void format_specifier(const char specifier, va_list args, int *counter)
 			}
 			break;
 		case 'd':
-			(*counter) += print_number(va_arg(args, int));
+			*counter += print_number(va_arg(args, int));
 			break;
 		case 'i':	
-			(*counter) += print_number(va_arg(args, int));
+			*counter += print_number(va_arg(args, int));
 			break;
 		default:
 			putchar('%');

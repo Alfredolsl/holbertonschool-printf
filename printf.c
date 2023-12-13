@@ -16,7 +16,7 @@ int print_number(int number)
 	int len = 0;
 	int div = 1;
 
-	if (number < 0)
+	if (number < 0 && number != INT_MIN)
 	{
 		len++;
 		putchar('-');

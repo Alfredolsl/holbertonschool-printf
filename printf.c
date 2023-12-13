@@ -4,6 +4,37 @@
 #include "main.h"
 
 /**
+ * print_number - prints a number to stdout
+ * @number - number to print
+ * @counter: pointer to variable called counter
+ */
+
+void print_number(int number, int *counter)
+{
+	int reverse = 0;
+
+	if (number < 0)
+	{
+		putchar('-');
+		number = -number;
+		(*counter)++;
+	}
+
+	while (number > 9)
+	{
+		reverse = reverse * 10 + number % 10;
+		number = number / 10;
+	}
+	putchar(number + '0');
+	while (reverse)
+	{
+		putchar(reverse % 10 + '0');
+		reverse = reverse / 10;
+		(*counter)++;
+	}
+}
+
+/**
  * format_specifier - select format
  * @specifier: char subsequent to the format modifier
  * @args: list of variadic args
@@ -13,8 +44,6 @@
 void format_specifier(const char specifier, va_list args, int *counter)
 {
 	char *strpos;
-	int number;
-	int reverse;
 
 	switch (specifier)
 	{
@@ -39,53 +68,10 @@ void format_specifier(const char specifier, va_list args, int *counter)
 			}
 			break;
 		case 'd':
-			reverse = 0;
-			number = va_arg(args, int);
-
-			if (number < 0)
-			{
-				putchar('-');
-				number = -number;
-			}
-
-			while (number > 9)
-			{
-				reverse = reverse * 10 + number % 10;
-				number = number / 10;
-			}
-			putchar(number + '0');
-			while (reverse)
-			{
-				putchar(reverse % 10 + '0');
-				reverse = reverse / 10;
-			}
-
+			print_number(va_arg(args, int), counter);
 			break;
 		case 'i':	
-			reverse = 0;
-			number = va_arg(args, int);
-
-			if (number < 0)
-			{
-				putchar('-');
-				number = -number;
-			}
-
-			while (number > 9)
-			{
-				reverse = reverse * 10 + number % 10;
-				number = number / 10;
-			}
-			putchar(number + '0');
-			while (reverse)
-			{
-				putchar(reverse % 10 + '0');
-				reverse = reverse / 10;
-			}
-			break;
-		case '%':
-			putchar('%');
-			(*counter)++;
+			print_number(va_arg(args, int), counter);
 			break;
 		default:
 			putchar('%');
@@ -129,7 +115,6 @@ int _printf(const char *format, ...)
 			counter++;
 		}
 	}
-
 	va_end(args);
 	return (counter);
 }

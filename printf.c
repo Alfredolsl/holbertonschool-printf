@@ -5,8 +5,7 @@
 
 /**
  * print_number - prints a number to stdout
- * @number - number to print
- * @counter: pointer to variable called counter
+ * @number: number to print
  *
  * Return: digit length of number
  */
@@ -16,14 +15,20 @@ int print_number(int number)
 	int len = 0;
 	int div = 1;
 
-	if (number < 0 && number != -2147483648) /* INT_MIN */
+	if (number == INT_MAX || number == INT_MIN)
+	{
+		len += printf("%d", number);
+		return (len);
+	}
+
+	else if (number < 0)
 	{
 		len++;
 		putchar('-');
 		number = number * -1;
 	}
 
-	while (number/div > 9)
+	while (number / div > 9)
 	{
 		div *= 10;
 	}
@@ -74,7 +79,7 @@ void format_specifier(const char specifier, va_list args, int *counter)
 		case 'd':
 			*counter += print_number(va_arg(args, int));
 			break;
-		case 'i':	
+		case 'i':
 			*counter += print_number(va_arg(args, int));
 			break;
 		default:

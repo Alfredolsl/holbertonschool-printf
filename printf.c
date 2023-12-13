@@ -18,7 +18,8 @@ int print_number(int number)
 
 	if (number < 0)
 	{
-		len += putchar('-');
+		len++;
+		putchar('-');
 		number = number * -1;
 	}
 

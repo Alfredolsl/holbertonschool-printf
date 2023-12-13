@@ -1,5 +1,5 @@
-#ifndef _PRINTF_H
-#define _PRINTF_H
+#ifndef PRINTF_H
+#define PRINTF_H
 
 int _printf(const char *format, ...);
 

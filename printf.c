@@ -7,6 +7,8 @@
  * print_number - prints a number to stdout
  * @number - number to print
  * @counter: pointer to variable called counter
+ *
+ * Return: digit length of number
  */
 
 int print_number(int number)
@@ -69,10 +71,10 @@ void format_specifier(const char specifier, va_list args, int *counter)
 			}
 			break;
 		case 'd':
-			*(counter) += print_number(va_arg(args, int));
+			(*counter) += print_number(va_arg(args, int));
 			break;
 		case 'i':	
-			*(counter) += print_number(va_arg(args, int));
+			(*counter) += print_number(va_arg(args, int));
 			break;
 		default:
 			putchar('%');

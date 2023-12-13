@@ -1,0 +1,42 @@
+NAME
+_printf - Formats and prints data
+
+SYNOPSIS
+printf FORMAT [argument]...
+
+DESCRIPTION
+Prints a string and formats it according to FORMAT and arguments.
+
+_printf takes an unlimited amount of parameters.
+
+_printf prints all the characters in a string subsequently, if it finds a percent sign (%), _printf will begin formatting the percent sign according to the argument, replacing the specifier with the argument. If another format specifier is detected, it goes to the next argument and uses its value. It then returns to printing a character at a time (from FORMAT).
+
+FORMAT SPECIFIERS
+Every format specification starts with a percent sign (%) and ends with a letter.
+
+%c
+print a single character
+
+%s
+print a string
+
+%d
+print a decimal (base 10) number
+
+%i
+print an integer in base 10
+
+%%
+print a percent sign (\% also works)
+
+
+EXAMPLES
+printf("foo %s", bar)
+
+In this example, the %s will be replaced by the argument [bar]. Printing to stdout "foo bar".
+
+SEE ALSO
+printf (3)
+
+AUTHOR
+Alfredo López Sánchez Lehman

@@ -9,7 +9,7 @@
  * @counter: pointer to variable called counter
  */
 
-void print_number(int number, int *counter)
+void print_number(int number)
 {
 	int reverse = 0;
 
@@ -17,7 +17,6 @@ void print_number(int number, int *counter)
 	{
 		putchar('-');
 		number = -number;
-		(*counter)++;
 	}
 
 	while (number > 9)
@@ -30,8 +29,25 @@ void print_number(int number, int *counter)
 	{
 		putchar(reverse % 10 + '0');
 		reverse = reverse / 10;
-		(*counter)++;
 	}
+}
+
+/**
+ * int_len - gets the length of an integer
+ * @number: integer to measure
+ *
+ * Return: length of number
+ */
+
+int int_len(int number)
+{
+	int len = 1;
+	while (number > 9)
+	{
+		len++;
+		number /= 10;
+	}
+	return (len);
 }
 
 /**
@@ -68,10 +84,12 @@ void format_specifier(const char specifier, va_list args, int *counter)
 			}
 			break;
 		case 'd':
-			print_number(va_arg(args, int), counter);
+			print_number(va_arg(args, int));
+			*(counter) += int_len(va_arg(args, int));
 			break;
 		case 'i':	
-			print_number(va_arg(args, int), counter);
+			print_number(va_arg(args, int));
+			*(counter) += int_len(va_arg(args, int));
 			break;
 		default:
 			putchar('%');

@@ -1,7 +1,6 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <limits.h>
 #include "main.h"
 
 /**
@@ -17,7 +16,7 @@ int print_number(int number)
 	int len = 0;
 	int div = 1;
 
-	if (number < 0 && number != INT_MIN)
+	if (number < 0 && number != -2147483648) /* INT_MIN */
 	{
 		len++;
 		putchar('-');
